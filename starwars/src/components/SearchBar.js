@@ -24,14 +24,15 @@ const SearchFormInput = styled.input`
 `;
 
 const SearchBar = props => {
+    //console.log("Search bar props", props);
     return (
         <SearchForm>
             <SearchFormLabel>Find a Character:</SearchFormLabel>
             <SearchFormInput
             type="text"
             placeholder="Search"
-            //value={props.searchTerm}
-            //onChange={props.handleChange}
+            value={props.searchTerm}
+            onChange={props.handleChange}
             />
         </SearchForm>
     );

@@ -14,12 +14,26 @@ const CharacterSection = styled.section`
 
 const CharacterList = () => {
 
-    // set state
+    // set data state
     const [characters, setCharacters] = useState([]);
+
+    //set search bar state 
+    const [searchTerm, setSearchTerm] = useState("");
+
+    // search bar event
+    const handleChange = event => {
+        const queryString = event.target.value;
+        setSearchTerm(queryString);
+    }
+
 
     // axios call & useEffect hook
     useEffect(() => {
-        axios.get("https://swapi.co/api/people/")
+        axios.get("https://swapi.co/api/people/", {
+            params: {
+                search: searchTerm
+            }
+        })
         .then(response => {
             //console.log(response.data.results);
             setCharacters(response.data.results);
@@ -27,11 +41,12 @@ const CharacterList = () => {
         .catch(error => {
             console.log("Error fetching data", error);
         })
-    }, []);
+    }, [searchTerm]);
+
 
     return (
         <CharacterSection>
-            <SearchBar />
+            <SearchBar searchTerm={searchTerm} handleChange={handleChange}/>
             {/* Map thru data here and set up card for each character from API */}
             {characters.map(character => {
                 return (
