@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import SearchBar from "./SearchBar";
 import CharacterCard from "./CharacterCard";
 import styled from "styled-components";
 
@@ -30,6 +31,7 @@ const CharacterList = () => {
 
     return (
         <CharacterSection>
+            <SearchBar />
             {/* Map thru data here and set up card for each character from API */}
             {characters.map(character => {
                 return (
