@@ -3,23 +3,27 @@ import styled from "styled-components";
 
 const SearchForm = styled.form`
     width: 90%;
-    margin-bottom: 32px;
+    margin-bottom: 48px;
 `;
 
 const SearchFormLabel = styled.label`
     font-family: "OpenSans";
-    font-size: 1.6rem;
-    margin-right: 24px;
+    font-size: 1.4rem;
+    color: #FAFAFA;
+    padding: 9px 24px 11px;
+    border-radius: 3px;
+    background-color: #C34E1C;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 `;
 
 const SearchFormInput = styled.input`
     font-family: "OpenSans";
     font-size: 1.4rem; 
-    background-color: rgb(255,255,255,.7);
+    background-color: rgb(255,255,255,.8);
     border: 0;
-    border-bottom: 3px solid #C34E1C;
-    border-left: 3px solid #C34E1C;
-    padding: 10px 6px;
+    border-radius: 3px;
+    padding: 10px 12px;
     width: 300px;
 `;
 
@@ -27,7 +31,7 @@ const SearchBar = props => {
     //console.log("Search bar props", props);
     return (
         <SearchForm>
-            <SearchFormLabel>Find a Character:</SearchFormLabel>
+            <SearchFormLabel>Find a Character</SearchFormLabel>
             <SearchFormInput
             type="text"
             placeholder="Search"
