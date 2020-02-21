@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
+import styled from "styled-components";
+
+const CharacterSection = styled.section`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+`;
 
 const CharacterList = () => {
 
@@ -11,7 +20,7 @@ const CharacterList = () => {
     useEffect(() => {
         axios.get("https://swapi.co/api/people/")
         .then(response => {
-            console.log(response.data.results);
+            //console.log(response.data.results);
             setCharacters(response.data.results);
         })
         .catch(error => {
@@ -20,7 +29,7 @@ const CharacterList = () => {
     }, []);
 
     return (
-        <section>
+        <CharacterSection>
             {/* Map thru data here and set up card for each character from API */}
             {characters.map(character => {
                 return (
@@ -34,7 +43,7 @@ const CharacterList = () => {
                     />
                 )
             })}
-        </section>
+        </CharacterSection>
     );
 }
 
