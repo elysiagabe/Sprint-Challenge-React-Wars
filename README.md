@@ -26,13 +26,46 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] What is React JS and what problems does it try and solve? Support your answer with concepts introduced in class and from your personal research on the web.
 
+  React JS is a user interface component library developed by the team at Facebook to help solve some of the problems they were facing building large web apps and dealing with complex state. It helps solve some of the following issues: 
+  - React JS renders components via the Virtual DOM instead of the actual DOM. This allows you to manage lots of data and complex state without bogging down the DOM or browser. 
+  - In React JS, everything is a component. This makes your code very scalable and reusable. Plus, it helps with debugging, working with a team of other developers, etc. 
+  - React JS doesn’t make assumptions about your tech stack and is un-opinionated about how you manage your data. Because it’s more flexible, you can choose what other tools, languages, libraries, etc. you want to use in your tech stack. 
+  - React is declarative, making it easier to write, design and debug. 
+  - React JS makes it easy to manage each component’s state and re-render a component when that state changes. This is great for web apps that, like Facebook, manage huge amounts of data that should change when users interact with them. 
+
+
 - [ ] What does it mean to _think_ in react?
+
+  I’m not entirely sure, but according to the React documentation, it means that you need to go through a certain thought process when building apps in React. The thought process should be something like this: 
+
+  1. Start with a UI mockup 
+  2. Break UI into a UI hierarchy
+      - One technique to do so is the single responsibility principle, i.e., a component should ideally do one thing
+  3. Build a static version in React
+      - Render UI without functionality
+      - Don’t introduce state yet
+      - Build top-down or bottom-up
+  4. Identify The Minimal (but complete) Representation Of UI State
+      - Figure out the least amount of mutable state your app needs...Remember: DRY!
+  5. Identify where your state should live
+      - Find which components will render something based on that state, then find a common owner component to hold state
+  6. Add inverse data flow	
+      - Figure out how to update state back up the component hierarchy to reflect user interactions 
+
 
 - [ ] Describe state.
 
+  State can be defined as the current data being displayed or condition/status of an app. It can and will often change value at a certain point, typically based on user interactions. In React, you can add state with the useState hook, which returns an array with 2 elements: the current value of the state and the state setter function. When a component’s state is set to a new value, the component will re-render. 
+
 - [ ] Describe props.
 
+  Props (aka properties) is a JavaScript object that holds info on state and is used to pass state or other data from one component to another. Props are read only and can’t be changed. They allow us to break apps into smaller components, which as mentioned in the first question can really help with certain challenges like debugging and working as part of a larger team. Props are similar to arguments in JavaScript functions. 
+
 - [ ] What are side effects, and how do you sync effects in a React component to state or prop changes?
+
+  Side effects are anything that affects something outside the scope of the function being executed. In a React component function, the primary purpose of that function is to return a component and render it on screen. Things like fetching data from an API, manually manipulating the DOM or setting up a subscription would all be considered side effects. Side effects can cause a component to return a different output for the same state and props, so you’ll need to manage them in some way to avoid any inconsistencies or bugs. Side effects like fetching data could also create some blocking code and prevent a component from rendering until the API call is finished, which may take more time than desired. 
+  
+  One way to manage side effects is with the useEffect hook, which takes 2 parameters: a callback function and a (technically optional) dependency array. The callback is the code that will run after the render is committed to the screen, and the dependency array watches for change to any state or props specified. If a change happens to the synced state or props, React will re-invoke the effect and re-render. 
 
 ## Project Set Up
 
