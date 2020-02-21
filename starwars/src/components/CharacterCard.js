@@ -1,13 +1,14 @@
 import React from "react";
 
-const CharacterCard = () => {
+const CharacterCard = props => {
+    console.log("CharacterCard props:", props);
     return (
-        <div>
-            <h2>Name: LUKE</h2>
-            <p>Gender: MALE</p>
-            <p>Birth Year: YEAR</p>
-            <p>Species: HUMAN</p>
-            <p>Homeworld: PLANET</p>
+        <div key={props.id}>
+            <h2>Name: {props.name}</h2>
+            <p>Gender: {props.gender}</p>
+            <p>Birth Year: {props.birthYear}</p>
+            <p>Height: {props.height}</p>
+            <p>Mass: {props.mass}</p>
         </div>
     );
 }
